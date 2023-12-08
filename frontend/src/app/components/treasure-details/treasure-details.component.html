@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title">Treasure Details</h4>
+</div>
+
+<div class="modal-body">
+
+  <div *ngIf="viewMode; else editable">
+    <div *ngIf="currentTreasure.id">
+      <h4 id="treasureNameText">{{ currentTreasure.name }}</h4>
+      <div>
+        <label id="descriptionText">Description:</label>
+        {{ currentTreasure.description }}
+      </div>
+      <div>
+        <label id="locationText">Location:</label>
+        {{ currentTreasure.locationName }}
+      </div>
+      <div>
+        <label id="wasFoundStatusText">
+          <span id="foundText" *ngIf="currentTreasure.wasFound">Treasure Found!</span>
+          <span id="notFoundText" *ngIf="!currentTreasure.wasFound">Treasure not found yet!</span>
+        </label>
+      </div>
+    </div>
+
+    <div *ngIf="!currentTreasure"><br/><p>Please select a treasure!</p></div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button *ngIf="!viewMode" class="btn btn-danger" (click)="deleteTreasure()">Delete</button>
+  <button *ngIf="!viewMode" type="submit" class="btn btn-success" (click)="updateTreasure()" [disabled]="!canUpdate || !editTreasureForm.valid">Update</button>
+
+  <button *ngIf="viewMode" type="button" class="btn btn-success" (click)="markTreasureAsFound()">Mark as found</button>
+
+  <button *ngIf="viewMode" type="button" class="btn btn-warning" (click)="viewMode = false">Edit</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
+</div>
+
+
+<ng-template #editable>
+  <div *ngIf="currentTreasure.id" class="edit-form">
+    <form [formGroup]="editTreasureForm">
+      <div>
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="currentTreasure.name"/>
+        <div *ngIf="editTreasureForm.get('name')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+      </div>
+      <div class="inputArea">
+        <label for="description" class="form-label">Description</label>
+        <input class="form-control" id="description" formControlName="description" [(ngModel)]="currentTreasure.description"/>
+        <div *ngIf="editTreasureForm.get('description')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+      </div>
+      <div class="inputArea">
+        <label for="wasFound" class="form-check-label">Was Found?</label>
+        <input type="checkbox" class="form-check-input" id="wasFound" formControlName="wasFound" [(ngModel)]="currentTreasure.wasFound"/>
+      </div>
+    </form>
+    <p>{{ infoMessage }}</p>
+  </div>
+
+  <div *ngIf="!currentTreasure.id">
+    <br />
+    <p>Cannot access this treasure!</p>
+  </div>
+</ng-template>

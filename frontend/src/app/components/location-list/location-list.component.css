@@ -1,0 +1,19 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.list h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+#createLocBtn {
+  margin-top: 1rem;
+}
+
+.scrollable-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}

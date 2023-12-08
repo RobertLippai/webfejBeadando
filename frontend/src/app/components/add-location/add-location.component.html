@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create a new location</h4>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="newLocationForm">
+    <div>
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name"/>
+      <div *ngIf="newLocationForm.get('name')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+    </div>
+    <div>
+      <label for="coordinates" class="form-label">Coordinates</label>
+      <input class="form-control" id="coordinates" formControlName="coordinates" />
+      <div *ngIf="newLocationForm.get('coordinates')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
+  <button type="button" class="btn btn-success" (click)="saveLocation()" [disabled]="!canSave || !newLocationForm.valid">Create</button>
+</div>

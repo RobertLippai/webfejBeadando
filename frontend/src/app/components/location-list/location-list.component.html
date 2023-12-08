@@ -1,0 +1,33 @@
+<div class="list row justify-content-center">
+  <div class="col-md-10">
+    <h2>Locations</h2>
+    <div class="scrollable-list">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let location of locations; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="openLocationDetailsModal(locationDetailsModal, location, i)"
+      >
+        {{ location.name }}
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 d-flex justify-content-center">
+    <button id="createLocBtn" class="btn btn-success" (click)="openAddLocationModal(addLocationModal)">
+      Create new location
+    </button>
+  </div>
+</div>
+
+<ng-template #locationDetailsModal let-modal>
+  <app-location-details [activeModal]="modal" [viewMode]="true" [currentLocation]="currentLocation"></app-location-details>
+</ng-template>
+
+<ng-template #addLocationModal let-modal>
+  <app-add-location [activeModal]="modal"></app-add-location>
+</ng-template>

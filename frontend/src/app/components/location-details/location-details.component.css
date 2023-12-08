@@ -1,0 +1,13 @@
+#locationNameText {
+  margin: 0.25rem 0rem 0.75rem 0rem;
+}
+
+#coordinatesText {
+  margin: 0.25rem 0rem 0.25rem 0rem;
+  font-weight: bold;
+}
+
+.inputArea {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}

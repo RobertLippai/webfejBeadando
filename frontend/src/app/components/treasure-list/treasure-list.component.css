@@ -1,0 +1,24 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.list h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+#createTreBtn {
+  margin-top: 1rem;
+}
+
+.scrollable-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+#emptyLocationWarning {
+  color: red;
+  font-weight: bold;
+}

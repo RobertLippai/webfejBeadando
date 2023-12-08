@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create a new treasure</h4>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="newTreasureForm">
+    <div>
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name"/>
+      <div *ngIf="newTreasureForm.get('name')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+    </div>
+    <div>
+      <label for="description" class="form-label">Description</label>
+      <input class="form-control" id="description" formControlName="description" />
+      <div *ngIf="newTreasureForm.get('description')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+    </div>
+    <div>
+      <label for="location" class="form-label">Location</label>
+      <select class="form-control" id="location" formControlName="location" [(ngModel)]="selectedLocation">
+        <option *ngFor="let location of locations" [ngValue]="location">{{ location.name }}</option>
+      </select>
+      <div *ngIf="newTreasureForm.get('location')?.hasError('required')" class="text-danger">Location is required!</div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
+  <button type="button" class="btn btn-success" (click)="saveTreasure()" [disabled]="!canSave || !newTreasureForm.valid">Create</button>
+</div>

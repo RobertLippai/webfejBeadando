@@ -1,0 +1,35 @@
+#treasureNameText {
+  margin: 0.25rem 0rem 0.75rem 0rem;
+}
+
+#descriptionText {
+  margin: 0.25rem 0rem 0.25rem 0rem;
+  font-weight: bold;
+}
+
+#wasFoundStatusText {
+  margin: 0.25rem 0rem 0.25rem 0rem;
+  font-weight: bold;
+}
+
+#foundText {
+  color: green;
+}
+
+#notFoundText {
+  color: red;
+}
+
+.inputArea {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+#wasFound {
+  margin-left: 1vh;
+}
+
+#locationText {
+  margin: 0.25rem 0rem 0.25rem 0rem;
+  font-weight: bold;
+}

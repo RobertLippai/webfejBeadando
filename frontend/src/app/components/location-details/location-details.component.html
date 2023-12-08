@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h4 class="modal-title">Location Details</h4>
+</div>
+
+<div class="modal-body">
+
+  <div *ngIf="viewMode; else editable">
+    <div *ngIf="currentLocation.id">
+      <h4 id="locationNameText">{{ currentLocation.name }}</h4>
+      <div>
+        <label id="coordinatesText">Coordinates:</label>
+        {{ currentLocation.coordinates }}
+      </div>
+    </div>
+
+    <div *ngIf="!currentLocation"><br/><p>Please select a location!</p></div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button *ngIf="!viewMode" class="btn btn-danger" (click)="deleteLocation()">Delete</button>
+  <button *ngIf="!viewMode"  type="submit" class="btn btn-success" (click)="updateLocation()" [disabled]="!canUpdate || !editLocationForm.valid">Update</button>
+  <button *ngIf="viewMode" type="button" class="btn btn-warning" (click)="viewMode = false">Edit</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
+</div>
+
+
+<ng-template #editable>
+  <div *ngIf="currentLocation.id" class="edit-form">
+    <form [formGroup]="editLocationForm">
+      <div>
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="currentLocation.name"/>
+        <div *ngIf="editLocationForm.get('name')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+      </div>
+      <div class="inputArea">
+        <label for="coordinates" class="form-label">Coordinates</label>
+        <input class="form-control" id="coordinates" formControlName="coordinates" [(ngModel)]="currentLocation.coordinates"/>
+        <div *ngIf="editLocationForm.get('coordinates')?.hasError('required')" class="text-danger">Cannot be empty!</div>
+      </div>
+    </form>
+    <p>{{ infoMessage }}</p>
+  </div>
+
+  <div *ngIf="!currentLocation.id">
+    <br />
+    <p>Cannot access this location!</p>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import "src/styles/morph_theme/bootstrap.min.css";
+
+body, html {
+  height: 100%;
+}
+
+body {
+  position: absolute;
+  background-image: url('src/styles/background_image.jpg');
+
+  !* Full height *!
+  height: 100%;
+  width: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  backdrop-filter: blur(10px); !* apply the blur *!
+  -webkit-backdrop-filter: blur(10px);
+}
+*/

@@ -1,0 +1,34 @@
+<div class="list row justify-content-center">
+  <div class="col-md-10">
+    <h2>Treasures</h2>
+    <div class="scrollable-list">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let treasure of treasures; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="openTreasureDetailsModal(locationDetailsModal, treasure, i)"
+        >
+          {{ treasure.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 d-flex justify-content-center">
+    <button id="createTreBtn" class="btn btn-success" (click)="openAddTreasureModal(addLocationModal)" *ngIf="locations?.length !== 0">
+      Create new treasure
+    </button>
+    <span *ngIf="locations?.length === 0" id="emptyLocationWarning">There are no locations!</span>
+  </div>
+</div>
+
+<ng-template #locationDetailsModal let-modal>
+  <app-treasure-details [activeModal]="modal" [viewMode]="true" [currentTreasure]="currentTreasure"></app-treasure-details>
+</ng-template>
+
+<ng-template #addLocationModal let-modal>
+  <app-add-treasure [activeModal]="modal"></app-add-treasure>
+</ng-template>
