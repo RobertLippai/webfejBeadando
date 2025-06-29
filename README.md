@@ -21,6 +21,12 @@ It was developed for a university web development course.
 - For ease of testing JWT security filters are disabled.
 - The original Thymeleaf frontend from the university project is now in the /_archived_frontend folder. The primary focus of this project is the REST API backend.
 
+## Before running the API create the properties file from the template
+```bash
+cp application.properties.example application.properties
+```
+Then, open application.properties and add your own unique secret key.
+
 ## API Endpoints
 **Authentication (/api/v1/auth)**
 - POST /signup: Registers a new user.

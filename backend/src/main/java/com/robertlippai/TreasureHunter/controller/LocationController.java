@@ -34,13 +34,12 @@ public class LocationController {
 
     @PostMapping("/add-location")
     public ResponseEntity<LocationDto> addLocation(@RequestBody LocationDto locationDto){
-        // nem az Id-et kell visszadni, hanem az egész objektumot amit készítettünk
         LocationDto newLocationDto = locationService.createLocation(locationDto);
 
         return new ResponseEntity<>(newLocationDto, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-location/{id}")  // Put-ban updatelünk!
+    @PutMapping("/update-location/{id}")
     public ResponseEntity<LocationDto> updateLocationById(@PathVariable Long id, @RequestBody LocationDto newMapData){
         LocationDto updatedMap = locationService.updateLocation(id, newMapData);
         return new ResponseEntity<>(updatedMap, HttpStatus.OK);
@@ -48,8 +47,6 @@ public class LocationController {
 
     @DeleteMapping("/delete-location/{id}")
     public ResponseEntity<HttpStatus> deleteLocationById(@PathVariable Long id){
-        // ha kitörüljük az ID felszabadul de a DBMS nem fogja újra felhasználni
-        // ami elméletileg normális és így lehet hagyni
         locationService.deleteLocation(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -57,7 +54,6 @@ public class LocationController {
 
     @GetMapping("/sample-locations")
     public ResponseEntity<HttpStatus> initLocations(){
-        // https://stackoverflow.com/questions/28147654/difference-between-getandset-and-compareandset-in-atomicboolean
         if(wasSampled){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }

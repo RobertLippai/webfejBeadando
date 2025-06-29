@@ -8,6 +8,4 @@ import lombok.Data;
 public class TreasureCreateResultDto {
     private TreasureDto treasureDto;
     private String unlockID;
-
-    // azért lett String az unlockID mert a böngészők valamiért kerekítenének a Long-on
 }

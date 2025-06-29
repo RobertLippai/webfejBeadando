@@ -38,10 +38,8 @@ public class TreasureController {
         return new ResponseEntity<>(treasureDtoList, HttpStatus.OK);
     }
 
-    // Másik DTO!
     @PostMapping("/add-treasure/{locationId}")
     public ResponseEntity<TreasureCreateResultDto> addTreasure(@PathVariable Long locationId, @RequestBody TreasureDto treasureDto){
-        // nem az Id-et kell visszadni, hanem az egész objektumot amit készítettünk
         TreasureCreateResultDto newTreasureDto = treasureService.createTreasure(locationId, treasureDto);
 
         return new ResponseEntity<>(newTreasureDto, HttpStatus.CREATED);

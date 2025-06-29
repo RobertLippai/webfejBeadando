@@ -59,7 +59,6 @@ public class LocationServiceImpl implements LocationService {
         LocationEntity locationEntity = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Location could not be updated."));
 
-        // az id-et sose változtatjuk meg! mert az új rekordot eredményezne
         locationEntity.setName(locationDto.getName());
         locationEntity.setCoordinates(locationDto.getCoordinates());
 

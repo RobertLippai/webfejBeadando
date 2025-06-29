@@ -21,7 +21,6 @@ public class LocationEntity {
     private String name;
     private String coordinates;
 
-    // Cascade All: bármilyen változtatás ami érinti a location-t a Treasure is végre lesz hajtva (törlés is!)
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TreasureEntity> treasureMaps = new ArrayList<>();
 }

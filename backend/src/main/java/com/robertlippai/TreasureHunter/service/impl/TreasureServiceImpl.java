@@ -56,7 +56,7 @@ public class TreasureServiceImpl implements TreasureService {
                         treasureMapDto.getDescription(),
                         locationId
                         )) {
-            throw new TreasureAlreadyExists("Treasure already exists."); // new exceiption
+            throw new TreasureAlreadyExists("Treasure already exists.");
         }
 
         long unlockCode = generateUnlockID();
@@ -82,7 +82,6 @@ public class TreasureServiceImpl implements TreasureService {
         TreasureEntity treasureMap = treasureRepository.findById(id)
                 .orElseThrow(() -> new TreasureNotFoundException("Treasure could not be updated."));
 
-        // az id-et sose változtatjuk meg! mert az új rekordot eredményezne
         treasureMap.setName(treasureDto.getName());
         treasureMap.setDescription(treasureDto.getDescription());
         treasureMap.setWasFound(treasureDto.getWasFound());

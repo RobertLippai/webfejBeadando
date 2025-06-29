@@ -9,7 +9,7 @@ public interface TreasureService {
 
     TreasureDto getTreasureById(long id);
 
-    // kell a locationID hogy a location-höz tudjuk kötni
+    // Needs a locationId to connect it to a location.
     TreasureCreateResultDto createTreasure(long locationId, TreasureDto treasureMapDto);
 
     TreasureDto updateTreasure(TreasureDto mapDto, long id);

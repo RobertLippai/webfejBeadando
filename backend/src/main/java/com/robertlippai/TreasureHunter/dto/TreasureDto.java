@@ -11,5 +11,4 @@ public class TreasureDto {
     private String description;
     private Boolean wasFound;
     private String locationName;
-    // unlockId nincs, azt nem továbbítjuk!
 }
